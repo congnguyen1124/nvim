@@ -1,0 +1,21 @@
+# macOS noise
+.DS_Store
+
+# vim-plug bootstrap script and downloaded plugins
+autoload/plug.vim
+plugged/
+
+# Generated runtime data (local caches, backups, sessions)
+swap/
+undo/
+backup/
+session/
+spell/
+.netrwhist
+
+# Editor temp files and tags
+*.sw?
+*.un~
+tags
+.ctags
+*.tags
