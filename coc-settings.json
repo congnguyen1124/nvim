@@ -27,11 +27,20 @@
         "typeParameter": "\uf728",
         "default": "\uf29c"
     },
-    "languageserver": { 
+    "languageserver": {
         "ccls": {
             "command": "ccls",
-            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json"],
+            "filetypes": [
+                "c",
+                "cpp",
+                "cuda",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json"
+            ],
             "initializationOptions": {
                 "cache": {
                     "directory": ".ccls-cache",
@@ -50,14 +59,93 @@
         },
         "cmake": {
             "command": "cmake-language-server",
-            "filetypes": ["cmake"],
+            "filetypes": [
+                "cmake"
+            ],
             "rootPatterns": [
                 "build/"
             ],
             "initializationOptions": {
                 "buildDirectory": "build"
             }
-        } 
+        }
+    },
+    
+  "jedi.enable": true,
+  "jedi.startupMessage": false,
+  "jedi.markupKindPreferred": "plaintext",
+  "jedi.trace.server": "off",
+  "jedi.jediSettings.autoImportModules": [],
+  "jedi.jediSettings.caseInsensitiveCompletion": true,
+  "jedi.jediSettings.debug": false,
+  "jedi.executable.command": "jedi-language-server",
+  "jedi.executable.args": [],
+  "jedi.codeAction.nameExtractFunction": "jls_extract_def",
+  "jedi.codeAction.nameExtractVariable": "jls_extract_var",
+  "jedi.completion.disableSnippets": false,
+  "jedi.completion.resolveEagerly": false,
+  "jedi.completion.ignorePatterns": [],
+  "jedi.diagnostics.enable": true,
+  "jedi.diagnostics.didOpen": true,
+  "jedi.diagnostics.didChange": true,
+  "jedi.diagnostics.didSave": true,
+  "jedi.hover.enable": true,
+  "jedi.hover.disable.keyword.all": false,
+  "jedi.hover.disable.keyword.names": [],
+  "jedi.hover.disable.keyword.fullNames": [],
+  "jedi.workspace.extraPaths": [],
+  "jedi.workspace.environmentPath": "~/CN_Develop/AI_MachineLearning/venv/bin/python",
+  "jedi.workspace.symbols.maxSymbols": 20,
+  "jedi.workspace.symbols.ignoreFolders": [
+    ".nox",
+    ".tox",
+    ".venv",
+    "__pycache__",
+    "venv"
+  ],
+    "diagnostic-languageserver.filetypes": {
+        "python": "pylint"
+    },
+    "diagnostic-languageserver.linters": {
+        "pylint": {
+            "sourceName": "pylint",
+            "command": "pylint",
+            "debounce": 100,
+            "args": [
+                "--output-format",
+                "text",
+                "--score",
+                "no",
+                "--msg-template",
+                "'{line}:{column}:{category}:{msg} ({msg_id}:{symbol})'",
+                "%file"
+            ],
+            "formatPattern": [
+                "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
+                {
+                    "line": 1,
+                    "column": 2,
+                    "endColumn": 2,
+                    "security": 3,
+                    "message": 4
+                }
+            ],
+            "rootPatterns": [
+                "pyproject.toml",
+                "setup.py",
+                ".git"
+            ],
+            "securities": {
+                "informational": "hint",
+                "refactor": "info",
+                "convention": "info",
+                "warning": "warning",
+                "error": "error",
+                "fatal": "error"
+            },
+            "offsetColumn": 1,
+            "offsetColumnEnd": 1,
+            "formatLines": 1
+        }
     }
-
 }

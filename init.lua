@@ -107,7 +107,7 @@ Plug('alvan/vim-closetag', {
 })
 Plug('mattn/emmet-vim')
 Plug('preservim/nerdcommenter')
-Plug('vim-python/python-syntax')
+-- Plug('vim-python/python-syntax')
 Plug('pappasam/coc-jedi', {
   ['do'] = 'yarn install --frozen-lockfile && yarn build',
   branch = 'main',
