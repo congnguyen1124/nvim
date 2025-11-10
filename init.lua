@@ -101,10 +101,8 @@ Plug('vim-airline/vim-airline-themes')
 Plug('voldikss/vim-floaterm')
 Plug('neoclide/coc.nvim', { branch = 'release' })
 Plug('jiangmiao/auto-pairs')
-Plug('alvan/vim-closetag', {
-  ['do'] = 'yarn install --frozen-lockfile && yarn build',
-  branch = 'main',
-})
+Plug('RRethy/vim-illuminate')
+
 Plug('mattn/emmet-vim')
 Plug('preservim/nerdcommenter')
 -- Plug('vim-python/python-syntax')
@@ -123,6 +121,7 @@ Plug('dart-lang/dart-vim-plugin')
 Plug('nvim-lua/plenary.nvim')
 Plug('stevearc/dressing.nvim')
 Plug('akinsho/flutter-tools.nvim')
+Plug('echasnovski/mini.nvim', { branch = 'stable' })
 Plug 'preservim/nerdtree'
 
 vim.call('plug#end')
