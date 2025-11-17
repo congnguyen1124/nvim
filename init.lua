@@ -77,6 +77,33 @@ map('n', '<M-Down>', '<cmd>resize +1<CR>')
 map('n', '<M-Up>', '<cmd>resize -1<CR>')
 map('n', '/\\', '<cmd>noh<CR>')
 map('n', '<leader>bd', '<cmd>bp | sp | bn | bd<CR>', { silent = true })
+map('n', '<C-o>', '<cmd>Telescope find_files<CR>', { silent = true, desc = 'Find files (Telescope)' })
+map('n', '<C-p>', '<cmd>Telescope live_grep<CR>', { silent = true, desc = 'Search text (Telescope)' })
+
+local function delete_buffer_to_left(force)
+  local listed = fn.getbufinfo({ buflisted = 1 })
+  local delete_cmd = force and 'bdelete!' or 'bdelete'
+
+  if #listed <= 1 then
+    cmd(delete_cmd)
+    return
+  end
+
+  local ok = pcall(cmd, 'bprevious')
+  if not ok then
+    cmd(delete_cmd)
+    return
+  end
+
+  cmd(delete_cmd .. ' #')
+end
+
+api.nvim_create_user_command('BdeleteLeft', function(opts)
+  delete_buffer_to_left(opts.bang)
+end, { bang = true, desc = 'Close current buffer and focus the previous one' })
+
+cmd([[cnoreabbrev <expr> bd   (getcmdtype() == ':' && getcmdline() == 'bd')  ? 'BdeleteLeft'  : 'bd']])
+cmd([[cnoreabbrev <expr> bd!  (getcmdtype() == ':' && getcmdline() == 'bd!') ? 'BdeleteLeft!' : 'bd!']])
 
 cmd([[vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>]])
 cmd([[vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>]])
@@ -89,11 +116,8 @@ vim.call('plug#begin', fn.stdpath('config') .. '/plugged')
 Plug('noorwachid/nvim-nightsky')
 Plug('navarasu/onedark.nvim')
 Plug('tribela/vim-transparent')
-Plug('preservim/nerdtree')
-Plug('Xuyuanp/nerdtree-git-plugin')
+Plug('nvim-tree/nvim-web-devicons')
 Plug('ryanoasis/vim-devicons')
-Plug('unkiwii/vim-nerdtree-sync')
-Plug('jcharum/vim-nerdtree-syntax-highlight', { branch = 'escape-keys' })
 Plug('junegunn/fzf', { ['do'] = function() fn['fzf#install']() end })
 Plug('junegunn/fzf.vim')
 Plug('vim-airline/vim-airline')
@@ -122,8 +146,11 @@ Plug('907th/vim-auto-save')
 Plug('dart-lang/dart-vim-plugin')
 Plug('nvim-lua/plenary.nvim')
 Plug('stevearc/dressing.nvim')
+Plug('nvim-telescope/telescope.nvim')
+Plug('MunifTanjim/nui.nvim')
+Plug('nvim-neo-tree/neo-tree.nvim')
+Plug('tpope/vim-commentary')
 Plug('akinsho/flutter-tools.nvim')
-Plug 'preservim/nerdtree'
 
 vim.call('plug#end')
 
@@ -132,25 +159,11 @@ cmd('colorscheme onedark')
 cmd('highlight Comment cterm=bold')
 
 g.python_highlight_all = 1
-g.NERDTreeShowHidden = 1
 g.auto_save = 1
 g.auto_save_silent = 1
+g.neo_tree_remove_legacy_commands = 1
 
 opt.guifont = 'FiraCode Nerd Font Mono:h9:cANSI'
-
--- Refresh NERDTree after saving a buffer
-local nerdtree_group = api.nvim_create_augroup('NerdTreeAutoRefresh', { clear = true })
-api.nvim_create_autocmd('BufWritePost', {
-  group = nerdtree_group,
-  callback = function()
-    if fn.exists(':NERDTreeFocus') == 0 then
-      return
-    end
-    cmd('NERDTreeFocus')
-    cmd('normal R')
-    cmd('wincmd p')
-  end,
-})
 
 -- Source additional settings (both Vimscript and Lua)
 local function source_glob(pattern)
