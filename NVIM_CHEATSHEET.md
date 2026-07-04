@@ -1,8 +1,8 @@
 # Huong dan su dung Neovim hien tai
 
-File nay tong hop tu `init.lua`, `settings/*.vim`, `settings/*.lua`, `lua/custom/*.lua` va cac plugin dang duoc load trong thu muc `plugged/`.
+File nay tong hop tu `init.lua`, `settings/*.vim`, `settings/*.lua`, `lua/custom/*.lua`, cac plugin trong `plugged/` va plugin local trong `local_plugged/`.
 
-Cap nhat: 2026-06-25.
+Cap nhat: 2026-07-04.
 
 ## Ky hieu phim
 
@@ -41,7 +41,7 @@ Config hien tai dung `vim-plug`.
 | Terminal | `vim-floaterm` |
 | LSP/completion | `coc.nvim`, `coc-jedi`, `coc-ruff` |
 | Python/fold | `SimpylFold` |
-| Git | `vim-fugitive`, `vim-rhubarb`, `vim-gitgutter`, `vim-mergetool` |
+| Git | `jetgit` (plugin local trong `local_plugged/`, khong qua vim-plug) |
 | Comment/code edit | `nerdcommenter`, `vim-commentary`, `auto-pairs`, `emmet-vim`, `vim-illuminate`, `mini.nvim`, `vim-auto-save` |
 | Dart/Flutter | `dart-vim-plugin`, `flutter-tools.nvim` |
 
@@ -252,68 +252,93 @@ Cac phim nay dung phim Space that, khong phai `<leader>`.
 | Visual/Operator | `ic` | Inner class |
 | Visual/Operator | `ac` | Around class |
 
-## Git
+## Git (JetGit - plugin local kieu JetBrains)
 
-### Fugitive va Rhubarb
+Plugin local o `local_plugged/jetgit/`, keymap o `settings/git.lua`. Mo phong git UI cua JetBrains IDE: gutter mark cho dong thay doi, rollback line, Git tool window (Local Changes + Log), diff viewer va 3-way merge de resolve conflict. Branch hien tai hien o airline section b.
 
-| Lenh | Tac dung |
-|---|---|
-| `:Git` hoac `:G` | Mo git status cua Fugitive, hoac chay git command |
-| `:Git status` | Git status |
-| `:Git blame` | Git blame file hien tai |
-| `:Git commit` | Commit |
-| `:Git push` | Push |
-| `:Git pull` | Pull |
-| `:Ggrep <pattern>` | Tim bang git grep |
-| `:Gclog` | Load git log vao quickfix |
-| `:Gedit <object>` | Mo git object |
-| `:Gsplit <object>` | Mo git object trong split |
-| `:Gvsplit <object>` | Mo git object trong vsplit |
-| `:Gread` | Lay noi dung tu index/object vao buffer |
-| `:Gwrite` | Ghi file va stage file |
-| `:Gdiffsplit` | Diff voi version trong git |
-| `:Gvdiffsplit` | Diff dang vertical split |
-| `:GBrowse` | Mo file/object tren remote browser |
-| `:GMove <path>` | Git mv file hien tai |
-| `:GRename <path>` | Rename file bang git |
-| `:GDelete` | Git rm file hien tai |
-| `:GRemove` | Git rm nhung giu buffer |
+### Gutter marks va rollback line
 
-### GitGutter
-
-| Lenh | Tac dung |
-|---|---|
-| `:GitGutterNextHunk` | Den hunk tiep theo |
-| `:GitGutterPrevHunk` | Den hunk truoc |
-| `:GitGutterPreviewHunk` | Preview hunk tai cursor |
-| `:GitGutterStageHunk` | Stage hunk tai cursor |
-| `:GitGutterUndoHunk` | Undo hunk tai cursor |
-| `:GitGutterQuickFix` | Dua tat ca hunks vao quickfix |
-| `:GitGutterQuickFixCurrentFile` | Dua hunks cua file hien tai vao quickfix |
-| `:GitGutterToggle` | Bat/tat GitGutter |
-| `:GitGutterSignsToggle` | Bat/tat sign cot trai |
-| `:GitGutterLineHighlightsToggle` | Bat/tat highlight dong |
-| `:GitGutterFold` | Fold cac dong khong thay doi |
-| `:GitGutterDiffOrig` | Diff voi ban goc |
-
-### Mergetool
+Dong them = `┃` xanh la, dong sua = `┃` xanh duong, dong xoa = `▁` do (giong mau JetBrains).
 
 | Mode | Phim/lenh | Tac dung |
 |---|---|---|
-| Normal | `<leader>mt` | Toggle mergetool |
-| Command | `:MergetoolStart` | Bat dau mergetool |
-| Command | `:MergetoolStop` | Dung mergetool |
-| Command | `:MergetoolToggle` | Bat/tat mergetool |
-| Command | `:MergetoolPreferLocal` | Chon local revision |
-| Command | `:MergetoolPreferRemote` | Chon remote revision |
-| Command | `:MergetoolToggleLayout` | Doi layout |
-| Command | `:MergetoolSetLayout <layout>` | Dat layout |
-| Command | `:MergetoolDiffExchangeLeft` | Doi diff sang trai |
-| Command | `:MergetoolDiffExchangeRight` | Doi diff sang phai |
-| Command | `:MergetoolDiffExchangeUp` | Doi diff len tren |
-| Command | `:MergetoolDiffExchangeDown` | Doi diff xuong duoi |
+| Normal | `<M-z>` hoac `<leader>gr` | Rollback thay doi tai cursor (JetBrains: `Ctrl+Alt+Z`) |
+| Visual | `<M-z>` hoac `<leader>gr` | Rollback cac dong dang chon |
+| Normal | `<leader>gp` | Preview thay doi tai cursor (float) |
+| Normal | `]c` / `[c` | Den thay doi tiep theo / truoc (giu nguyen y nghia cu trong diff mode) |
+| Command | `:JetGitRollback` | Rollback (nhan range, vi du `:10,20JetGitRollback`) |
+| Command | `:JetGitPreviewHunk` | Preview hunk |
+| Command | `:JetGitNextHunk` / `:JetGitPrevHunk` | Nhay giua cac hunk |
+| Command | `:JetGitRefresh` | Refresh gutter marks va panel |
 
-Config mergetool hien tai: layout `mr`, uu tien revision `local`.
+### Git tool window (Local Changes + Log)
+
+| Mode | Phim/lenh | Tac dung |
+|---|---|---|
+| Normal | `<M-9>` hoac `<leader>gg` | Bat/tat Git tool window (JetBrains: `Alt+9`) |
+| Normal | `<leader>gL` | Mo panel o section Log |
+| Command | `:JetGit` | Toggle panel |
+| Command | `:JetGitLog` | Mo panel o section Log |
+
+Phim trong panel (nhan `?` de xem help):
+
+| Phim | Tac dung |
+|---|---|
+| `Tab` | Chuyen giua Local Changes va Log |
+| `Enter` | Local Changes: mo diff cua file / Log: xem commit (stat + patch) |
+| `o` | Mo file trong editor |
+| `s` | Stage/unstage file (voi conflict: danh dau da resolve) |
+| `a` | Stage tat ca (`git add -A`) |
+| `r` | Rollback file ve HEAD (file untracked: hoi xoa) |
+| `m` | Mo 3-way merge view cho file conflict |
+| `c` / `C` | Commit / amend commit truoc |
+| `P` | Push |
+| `u` | Pull (update project) |
+| `f` | Fetch --all |
+| `y` | Log: yank hash cua commit |
+| `R` | Refresh |
+| `q` | Dong panel |
+
+### Diff viewer
+
+| Mode | Phim/lenh | Tac dung |
+|---|---|---|
+| Normal | `<M-d>` hoac `<leader>gd` | Diff file hien tai voi index, mo tab moi (JetBrains: `Ctrl+D`) |
+| Command | `:JetGitDiff` | Nhu tren |
+| Trong tab diff | `q` | Dong tab diff (nhan tren buffer ben trai) |
+
+File staged trong panel duoc diff HEAD vs index. File untracked duoc diff voi noi dung rong. Ben phai la file that, sua truc tiep duoc.
+
+### Commit, push, pull
+
+| Mode | Phim/lenh | Tac dung |
+|---|---|---|
+| Normal | `<M-k>` hoac `<leader>gc` | Commit, nhap message qua prompt (JetBrains: `Ctrl+K`) |
+| Normal | `<leader>gP` | Push |
+| Normal | `<leader>gu` | Pull |
+| Normal | `<leader>gf` | Fetch --all |
+| Command | `:JetGitCommit` / `:JetGitCommit!` | Commit / amend |
+| Command | `:JetGitPush` / `:JetGitPull` / `:JetGitFetch` | Push / pull / fetch (chay async) |
+
+Neu chua stage gi, commit se hoi co stage all khong.
+
+### Resolve conflict (3-way merge)
+
+| Mode | Phim/lenh | Tac dung |
+|---|---|---|
+| Normal | `<leader>gm` | Mo merge view cho file conflict hien tai: LOCAL \| RESULT \| REMOTE |
+| Command | `:JetGitMerge` | Nhu tren |
+
+Trong buffer RESULT (o giua) va trong file co conflict marker:
+
+| Phim | Tac dung |
+|---|---|
+| `<leader>co` | Accept yours (phan cua ban) |
+| `<leader>ct` | Accept theirs (phan cua nhanh kia) |
+| `<leader>cb` | Accept ca hai |
+| `]x` / `[x` | Den conflict tiep theo / truoc |
+| `<leader>cd` | Xong: luu file, `git add`, dong tab merge |
+| `q` | Dong tab merge (nhan tren buffer LOCAL/REMOTE) |
 
 ## Comment code
 
@@ -454,7 +479,6 @@ Airline hien dang dung theme `onedark`, co tabline, ten tab hien theo ten file.
 | `plenary.nvim`, `nui.nvim` | Thu vien phu thuoc cho Telescope/Neo-tree/plugin Lua |
 | `dressing.nvim` | Cai thien UI input/select cua Neovim |
 | `dart-vim-plugin` | Filetype/syntax/indent cho Dart |
-| `vim-rhubarb` | Mo GitHub remote qua `:GBrowse` |
 
 ## Lenh tu kiem tra trong Neovim
 
@@ -475,3 +499,4 @@ Airline hien dang dung theme `onedark`, co tabline, ten tab hien theo ten file.
 - Config vua co Neo-tree vua co NERDTree. Nen dung Neo-tree voi `<C-B>` neu khong co nhu cau rieng voi NERDTree.
 - Config vua co `vim-commentary` vua co `NERDCommenter`. Nen dung `gcc`/`gc` cho nhanh; dung NERDCommenter khi can cac kieu comment nang cao.
 - `<leader>` dang la `\`. Neu muon doi thanh Space, them `vim.g.mapleader = ' '` truoc khi khai bao keymap/plugin.
+- Git plugin cu (`vim-fugitive`, `vim-rhubarb`, `vim-gitgutter`, `vim-mergetool`) da bi xoa, thay bang plugin local `jetgit` trong `local_plugged/` (khong quan ly boi vim-plug, duoc them vao runtimepath trong `init.lua`).

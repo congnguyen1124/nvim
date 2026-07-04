@@ -135,10 +135,6 @@ Plug('pappasam/coc-jedi', {
   branch = 'main',
 })
 Plug('yaegassy/coc-ruff', { ['do'] = 'yarn install --frozen-lockfile' })
-Plug('tpope/vim-fugitive')
-Plug('tpope/vim-rhubarb')
-Plug('airblade/vim-gitgutter')
-Plug('samoshkin/vim-mergetool')
 Plug('tmhedberg/SimpylFold')
 Plug('907th/vim-auto-save')
 Plug('dart-lang/dart-vim-plugin')
@@ -153,6 +149,9 @@ Plug('echasnovski/mini.nvim', { branch = 'stable' })
 Plug 'preservim/nerdtree'
 
 vim.call('plug#end')
+
+-- Local plugins (not managed by vim-plug)
+opt.rtp:append(fn.stdpath('config') .. '/local_plugged/jetgit')
 
 -- Theme and highlights
 cmd('colorscheme onedark')
