@@ -146,7 +146,6 @@ Plug('nvim-neo-tree/neo-tree.nvim')
 Plug('tpope/vim-commentary')
 Plug('akinsho/flutter-tools.nvim')
 Plug('echasnovski/mini.nvim', { branch = 'stable' })
-Plug 'preservim/nerdtree'
 
 vim.call('plug#end')
 

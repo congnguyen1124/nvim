@@ -25,7 +25,6 @@
 ## Ghi chú về config hiện tại
 
 - `settings/vista.vim` chỉ còn nội dung comment và plugin `vista.vim` không được khai báo trong `init.lua`, nên không được đưa vào danh sách lệnh sử dụng chính.
-- Config có cả Neo-tree và NERDTree. Nên dùng Neo-tree với `<C-B>` nếu không có nhu cầu riêng với NERDTree.
 - Config có cả `vim-commentary` và `NERDCommenter`. Nên dùng `gcc`/`gc` cho nhanh; dùng NERDCommenter khi cần các kiểu comment nâng cao.
 - `<leader>` đang là `\`. Nếu muốn đổi thành Space, thêm `vim.g.mapleader = ' '` trước khi khai báo keymap/plugin.
 - Các plugin Git cũ (`vim-fugitive`, `vim-rhubarb`, `vim-gitgutter`, `vim-mergetool`) đã bị xóa, thay bằng plugin cục bộ `jetgit` trong `local_plugged/` (không do vim-plug quản lý, được thêm vào runtimepath trong `init.lua`).

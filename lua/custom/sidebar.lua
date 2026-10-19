@@ -10,7 +10,6 @@ local function setup_illuminate()
     delay = 200,
     providers = { 'lsp', 'regex' },
     filetypes_denylist = {
-      'nerdtree',
       'gitcommit',
       'help',
       'alpha',
@@ -40,7 +39,7 @@ local function should_hide_minimap(buf)
   end
 
   local ft = vim.bo[buf].filetype
-  if ft == 'nerdtree' or ft == 'startuptime' or ft == 'gitcommit' then
+  if ft == 'startuptime' or ft == 'gitcommit' then
     return true
   end
 

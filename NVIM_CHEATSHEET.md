@@ -10,7 +10,7 @@ Cập nhật: 2026-10-18.
 |---|---|
 | Ký hiệu phím, phím tắt chung, buffer | [chatsheet_general_shortcuts.md](chatsheet/chatsheet_general_shortcuts.md) |
 | Quản lý plugin và danh sách plugin | [chatsheet_plugin_management.md](chatsheet/chatsheet_plugin_management.md) |
-| Telescope, FZF, Neo-tree, NERDTree | [chatsheet_search_and_file_tree.md](chatsheet/chatsheet_search_and_file_tree.md) |
+| Telescope, FZF và Neo-tree | [chatsheet_search_and_file_tree.md](chatsheet/chatsheet_search_and_file_tree.md) |
 | Terminal Floaterm | [chatsheet_floaterm.md](chatsheet/chatsheet_floaterm.md) |
 | CoC LSP, completion, diagnostics, code action | [chatsheet_coc_lsp.md](chatsheet/chatsheet_coc_lsp.md) |
 | Git, diff, commit và xử lý conflict | [chatsheet_git.md](chatsheet/chatsheet_git.md) |

@@ -42,9 +42,9 @@ Trong cửa sổ FZF:
 
 ## File tree
 
-Config hiện tại cài cả Neo-tree và NERDTree. Phím tắt tùy chỉnh đang ưu tiên Neo-tree.
+Config hiện tại dùng Neo-tree.
 
-### Neo-tree
+### Mở và điều hướng
 
 | Chế độ | Phím/lệnh | Tác dụng |
 |---|---|---|
@@ -57,14 +57,32 @@ Config hiện tại cài cả Neo-tree và NERDTree. Phím tắt tùy chỉnh đ
 | Command | `:Neotree buffers` | Xem các buffer |
 | Command | `:Neotree git_status` | Xem trạng thái Git |
 
-### NERDTree
+Trong cửa sổ Neo-tree:
 
-| Lệnh | Tác dụng |
+| Phím | Tác dụng |
 |---|---|
-| `:NERDTree` | Mở NERDTree |
-| `:NERDTreeToggle` | Bật/tắt NERDTree |
-| `:NERDTreeFind` | Tìm file hiện tại trong tree |
-| `:NERDTreeFocus` | Focus vào NERDTree |
-| `:NERDTreeClose` | Đóng NERDTree |
-| `:NERDTreeCWD` | Đặt root theo thư mục làm việc hiện tại |
-| `:NERDTreeRefreshRoot` | Làm mới root |
+| `<Enter>` | Mở file hoặc mở/thu gọn thư mục |
+| `<Space>` | Mở/thu gọn node |
+| `<Backspace>` | Đi lên thư mục cha |
+| `.` | Đặt thư mục đang chọn làm root |
+| `S` | Mở file trong split ngang |
+| `s` | Mở file trong split dọc |
+| `t` | Mở file trong tab mới |
+| `R` | Làm mới cây thư mục |
+| `?` | Xem toàn bộ keymap hiện có |
+
+### Thêm, đổi tên và xóa file/thư mục
+
+Đặt con trỏ lên thư mục đích trước khi tạo nội dung mới.
+
+| Phím | Tác dụng |
+|---|---|
+| `a` | Tạo file mới; thêm `/` ở cuối tên để tạo thư mục, ví dụ `components/` |
+| `A` | Tạo thư mục mới, không cần thêm `/` ở cuối tên |
+| `r` | Đổi tên file hoặc thư mục đang chọn |
+| `b` | Đổi tên nhưng giữ nguyên phần mở rộng của file |
+| `d` | Xóa file hoặc thư mục đang chọn; Neo-tree sẽ yêu cầu xác nhận |
+| `c` | Sao chép file hoặc thư mục |
+| `m` | Di chuyển file hoặc thư mục |
+| `y` | Đánh dấu để sao chép, sau đó dùng `p` để dán |
+| `x` | Đánh dấu để di chuyển, sau đó dùng `p` để dán |

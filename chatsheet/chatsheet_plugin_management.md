@@ -21,7 +21,7 @@ Config hiện tại dùng `vim-plug`.
 |---|---|
 | Theme/UI | `nvim-nightsky`, `onedark.nvim`, `vim-transparent`, `vim-airline`, `vim-airline-themes`, `nvim-web-devicons`, `vim-devicons`, `dressing.nvim` |
 | Tìm kiếm | `fzf`, `fzf.vim`, `telescope.nvim`, `plenary.nvim` |
-| File tree | `neo-tree.nvim`, `nui.nvim`, `nerdtree` |
+| File tree | `neo-tree.nvim`, `nui.nvim` |
 | Terminal | `vim-floaterm` |
 | LSP/completion | `coc.nvim`, `coc-jedi`, `coc-ruff` |
 | Python/fold | `SimpylFold` |

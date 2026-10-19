@@ -12,7 +12,7 @@
 | Command | `:IlluminatePauseBuf` | Tạm dừng Illuminate cho buffer hiện tại |
 | Command | `:IlluminateResumeBuf` | Tiếp tục Illuminate cho buffer hiện tại |
 
-Minimap tự động ẩn với buffer quá ngắn, buffer đặc biệt, `nerdtree`, `gitcommit`, `startuptime`.
+Minimap tự động ẩn với buffer quá ngắn, buffer đặc biệt, `gitcommit`, `startuptime`.
 
 ## Auto-pairs, auto-save và fold
 

@@ -173,7 +173,7 @@ function M.goto_main_win(skip_win)
     if win ~= skip_win and api.nvim_win_get_config(win).relative == '' then
       local buf = api.nvim_win_get_buf(win)
       local ft = vim.bo[buf].filetype
-      if ft ~= 'jetgit' and ft ~= 'neo-tree' and ft ~= 'nerdtree' and vim.bo[buf].buftype ~= 'terminal' then
+      if ft ~= 'jetgit' and ft ~= 'neo-tree' and vim.bo[buf].buftype ~= 'terminal' then
         api.nvim_set_current_win(win)
         return
       end
