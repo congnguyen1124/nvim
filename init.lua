@@ -129,13 +129,11 @@ Plug('RRethy/vim-illuminate')
 
 Plug('mattn/emmet-vim')
 Plug('preservim/nerdcommenter')
--- Plug('vim-python/python-syntax')
 Plug('pappasam/coc-jedi', {
-  ['do'] = 'yarn install --frozen-lockfile && yarn build',
+  ['do'] = 'npm install --legacy-peer-deps --no-audit --no-fund && npm run build',
   branch = 'main',
 })
-Plug('yaegassy/coc-ruff', { ['do'] = 'yarn install --frozen-lockfile' })
-Plug('tmhedberg/SimpylFold')
+Plug('yaegassy/coc-ruff', { ['do'] = 'npm install --legacy-peer-deps --no-audit --no-fund && npm run build' })
 Plug('907th/vim-auto-save')
 Plug('dart-lang/dart-vim-plugin')
 Plug('nvim-lua/plenary.nvim')
@@ -145,18 +143,18 @@ Plug('MunifTanjim/nui.nvim')
 Plug('nvim-neo-tree/neo-tree.nvim')
 Plug('tpope/vim-commentary')
 Plug('akinsho/flutter-tools.nvim')
-Plug('echasnovski/mini.nvim', { branch = 'stable' })
 
 vim.call('plug#end')
 
 -- Local plugins (not managed by vim-plug)
 opt.rtp:append(fn.stdpath('config') .. '/local_plugged/jetgit')
+opt.rtp:append(fn.stdpath('config') .. '/local_plugged/python-pro')
+opt.rtp:append(fn.stdpath('config') .. '/local_plugged/code-scrollbar')
 
 -- Theme and highlights
 cmd('colorscheme onedark')
 cmd('highlight Comment cterm=bold')
 
-g.python_highlight_all = 1
 g.auto_save = 1
 g.auto_save_silent = 1
 g.neo_tree_remove_legacy_commands = 1

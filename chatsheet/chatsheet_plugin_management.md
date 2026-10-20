@@ -24,7 +24,8 @@ Config hiện tại dùng `vim-plug`.
 | File tree | `neo-tree.nvim`, `nui.nvim` |
 | Terminal | `vim-floaterm` |
 | LSP/completion | `coc.nvim`, `coc-jedi`, `coc-ruff` |
-| Python/fold | `SimpylFold` |
+| Python | `python-pro` (plugin cục bộ), `coc-jedi`, `coc-ruff` |
 | Git | `jetgit` (plugin cục bộ trong `local_plugged/`, không qua vim-plug) |
-| Comment/chỉnh sửa code | `nerdcommenter`, `vim-commentary`, `auto-pairs`, `emmet-vim`, `vim-illuminate`, `mini.nvim`, `vim-auto-save` |
+| Comment/chỉnh sửa code | `nerdcommenter`, `vim-commentary`, `auto-pairs`, `emmet-vim`, `vim-illuminate`, `vim-auto-save` |
+| Scrollbar | `code-scrollbar` (plugin cục bộ) |
 | Dart/Flutter | `dart-vim-plugin`, `flutter-tools.nvim` |

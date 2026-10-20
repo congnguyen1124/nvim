@@ -70,8 +70,29 @@
             }
         }
     },
-    "python.pythonPath": "/usr/bin/python3",
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.useLibraryCodeForTypes": true
+    "semanticTokens.enable": true,
+    "[python]": {
+        "inlayHint.enable": false,
+        "inlayHint.enableParameter": false,
+        "inlayHint.display": false
+    },
+    "jedi.enable": true,
+    "jedi.startupMessage": false,
+    "jedi.diagnostics.enable": true,
+    "jedi.completion.resolveEagerly": true,
+    "ruff.enable": true,
+    "ruff.nativeServer": true,
+    "ruff.disableDocumentFormatting": false,
+    "ruff.lint.enable": true,
+    "ruff.lint.run": "onType",
+    "ruff.lint.extendSelect": [
+        "N"
+    ],
+    "ruff.lineLength": 88,
+    "ruff.organizeImports": true,
+    "ruff.fixAll": true,
+    "ruff.codeAction.fixViolation.enable": true,
+    "ruff.codeAction.disableRuleComment.enable": true,
+    "ruff.configurationPreference": "editorFirst",
+    "ruff.showNotifications": "onError"
 }
